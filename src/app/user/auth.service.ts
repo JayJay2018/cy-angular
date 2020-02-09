@@ -23,6 +23,7 @@ export class AuthService {
   authStatusChanged = new Subject<boolean>();
   registeredUser: CognitoUser;
   constructor(private router: Router) {}
+
   signUp(username: string, email: string, password: string): void {
     this.authIsLoading.next(true);
     const user: User = {
