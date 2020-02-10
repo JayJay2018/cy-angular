@@ -102,17 +102,29 @@ export class AuthService {
     return;
   }
   getAuthenticatedUser() {
+    return userPool.getCurrentUser();
   }
   logout() {
+    this.getAuthenticatedUser().signOut();
     this.authStatusChanged.next(false);
   }
   isAuthenticated(): Observable<boolean> {
     const user = this.getAuthenticatedUser();
     const obs = Observable.create((observer) => {
-      if (user !== null) {
+      if (!user) {
         observer.next(false);
       } else {
-        observer.next(false);
+        user.getSession((err, session) => {
+          if (err) {
+            observer.next(false);
+          } else {
+            if (session.isValid()) {
+              observer.next(true);
+            } else {
+              observer.next(false);
+            }
+          }
+        });
       }
       observer.complete();
     });
