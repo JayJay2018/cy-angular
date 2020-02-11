@@ -14,6 +14,7 @@
       <a style="cursor: pointer;" class="list-group-item" (click)="onFilter('age')" [ngClass]="{active: filter == 'age'}">Your Age: {{ user.age }}</a>
       <a style="cursor: pointer;" class="list-group-item" (click)="onFilter('height')" [ngClass]="{active: filter == 'height'}">Your Height: {{ user.height }}</a>
       <a style="cursor: pointer;" class="list-group-item" (click)="onFilter('income')" [ngClass]="{active: filter == 'income'}">Your Income: {{ user.income }}</a>
+      <a style="cursor: pointer;" class="list-group-item" (click)="onFilter('city')" [ngClass]="{active: filter == 'city'}">Your city: {{ user.city }}</a>
     </div>
     <div>
       <button class="btn" [ngClass]="{'btn-default': !lowerIsBetter, 'btn-primary': lowerIsBetter}" (click)="onSelectLower(true)">Lower is better</button>

@@ -42,6 +42,18 @@
           class="form-control text-center"
           required>
       </div>
+      <div class="form-group">
+        <label
+          for="city"
+          class="control-label">your home town</label>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          ngModel
+          class="form-control text-center"
+          required>
+      </div>
       <button class="btn btn-primary" type="submit" [disabled]="compareForm.invalid">Submit</button>
     </form>
   </div>
