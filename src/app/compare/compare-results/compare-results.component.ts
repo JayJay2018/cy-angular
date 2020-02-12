@@ -31,6 +31,9 @@ export class CompareResultsComponent implements OnInit {
     this.compareService.dataLoadFailed.subscribe(
       (didFail: boolean) => this.didFail = didFail
     );
+    if (this.compareData) {
+      console.log(this.compareData);
+    }
   }
 
   onFilter(filter: string) {

@@ -49,10 +49,7 @@ export class CompareService {
     this.dataLoaded.next(null);
     this.dataLoadFailed.next(false);
     this.authService.getAuthenticatedUser().getSession((err, session) => {
-      if (err) {
-        return;
-      }
-      let queryParam = '?accessToken=' + session.getAccessToken().getJwtToken();
+      const queryParam = '?accessToken=' + session.getAccessToken().getJwtToken();
       let urlParam = 'all';
       if (!all) {
         urlParam = 'single';
@@ -70,6 +67,7 @@ export class CompareService {
             } else {
               console.log(data);
               if (!data) {
+                console.log('lol?');
                 this.dataLoadFailed.next(true);
                 return;
               }
