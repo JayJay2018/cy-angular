@@ -27,7 +27,6 @@ export class CompareService {
       if (err) {
         return;
       }
-      // console.log(session.getIdToken().getJwtToken())
       this.http.post('https://u6a276f0mk.execute-api.eu-central-1.amazonaws.com/dev/compare-yourself', data, {
         headers: new Headers({'Authorization': session.getIdToken().getJwtToken()})
       })
@@ -61,16 +60,17 @@ export class CompareService {
           (response: Response) => response.json()
         )
         .subscribe(
+
           (data) => {
             if (all) {
               this.dataLoaded.next(data);
             } else {
-              console.log(data);
               if (!data) {
-                console.log('lol?');
+
                 this.dataLoadFailed.next(true);
                 return;
               }
+
               this.userData = data[0];
               this.dataEdited.next(true);
             }
@@ -84,14 +84,18 @@ export class CompareService {
   }
   onDeleteData() {
     this.dataLoadFailed.next(false);
-      this.http.delete('https://API_ID.execute-api.REGION.amazonaws.com/dev/', {
-        headers: new Headers({'Authorization': 'XXX'})
+    this.authService.getAuthenticatedUser().getSession((err, session) => {
+      const queryParam = '?accessToken=' + session.getAccessToken().getJwtToken();
+      this.http.delete('https://u6a276f0mk.execute-api.eu-central-1.amazonaws.com/dev/compare-yourself' + queryParam, {
+        headers: new Headers({'Authorization': session.getIdToken().getJwtToken()})
       })
         .subscribe(
           (data) => {
-            console.log(data);
+            console.log('deleted_' + data);
           },
           (error) => this.dataLoadFailed.next(true)
         );
+
+    })
   }
 }

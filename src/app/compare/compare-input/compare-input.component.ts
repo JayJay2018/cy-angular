@@ -33,8 +33,7 @@ export class CompareInputComponent implements OnInit {
     const data: CompareData = {
       age: this.form.value.age as number,
       height: this.form.value.height as number,
-      income: this.form.value.income as number,
-      city: this.form.value.city as string
+      income: this.form.value.income as number
     };
     this.compareService.onStoreData(data);
   }

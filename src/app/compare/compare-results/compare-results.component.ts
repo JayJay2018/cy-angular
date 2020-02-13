@@ -25,15 +25,13 @@ export class CompareResultsComponent implements OnInit {
     );
     this.compareService.dataLoaded.subscribe(
       (data: CompareData[]) => {
+        console.log('hello=_?' + data)
         this.compareData = data;
       }
     );
     this.compareService.dataLoadFailed.subscribe(
       (didFail: boolean) => this.didFail = didFail
     );
-    if (this.compareData) {
-      console.log(this.compareData);
-    }
   }
 
   onFilter(filter: string) {
