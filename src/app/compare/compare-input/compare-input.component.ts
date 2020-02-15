@@ -41,4 +41,8 @@ export class CompareInputComponent implements OnInit {
   onFetchStoredData() {
     this.compareService.onRetrieveData(false);
   }
+
+  onPostSlack() {
+    this.compareService.onSlackPost();
+  }
 }

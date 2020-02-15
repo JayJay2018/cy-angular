@@ -9,6 +9,7 @@
         <li *ngIf="isAuthenticated" routerLinkActive="active"><a (click)="onLogout()" style="cursor: pointer;">Logout</a></li>
         <li *ngIf="!isAuthenticated" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Sign In</a></li>
         <li *ngIf="!isAuthenticated" routerLinkActive="active"><a routerLink="/signup">Sign Up</a></li>
+        <button class="btn btn-primary" (click)="onPostSlack()">Dummy Slack Endpoint</button>
       </ul>
     </div>
   </div>

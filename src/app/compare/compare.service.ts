@@ -98,4 +98,18 @@ export class CompareService {
 
     })
   }
+
+  onSlackPost(msg = {'customMessage': 'msg'}) {
+    this.http.post('https://u6a276f0mk.execute-api.eu-central-1.amazonaws.com/dev/compare-yourself/slack', msg)
+        .subscribe(
+          (dummy) => {
+            console.log('slack_' + dummy);
+          },
+          (error) => {
+            this.dataLoadFailed.next(true)
+            console.log(error);
+          }
+        );
+    }
+
 }
